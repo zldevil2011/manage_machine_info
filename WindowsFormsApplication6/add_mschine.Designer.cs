@@ -30,8 +30,8 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.longitude = new System.Windows.Forms.TextBox();
+            this.latitude = new System.Windows.Forms.TextBox();
             this.add_machine_save = new System.Windows.Forms.Button();
             this.add_machine_cancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -54,19 +54,19 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "纬度";
             // 
-            // textBox1
+            // longitude
             // 
-            this.textBox1.Location = new System.Drawing.Point(98, 50);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
-            this.textBox1.TabIndex = 2;
+            this.longitude.Location = new System.Drawing.Point(98, 50);
+            this.longitude.Name = "longitude";
+            this.longitude.Size = new System.Drawing.Size(100, 21);
+            this.longitude.TabIndex = 2;
             // 
-            // textBox2
+            // latitude
             // 
-            this.textBox2.Location = new System.Drawing.Point(98, 91);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 21);
-            this.textBox2.TabIndex = 3;
+            this.latitude.Location = new System.Drawing.Point(98, 91);
+            this.latitude.Name = "latitude";
+            this.latitude.Size = new System.Drawing.Size(100, 21);
+            this.latitude.TabIndex = 3;
             // 
             // add_machine_save
             // 
@@ -76,6 +76,7 @@
             this.add_machine_save.TabIndex = 4;
             this.add_machine_save.Text = "添加";
             this.add_machine_save.UseVisualStyleBackColor = true;
+            this.add_machine_save.Click += new System.EventHandler(this.add_machine_save_Click);
             // 
             // add_machine_cancel
             // 
@@ -93,8 +94,8 @@
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.add_machine_cancel);
             this.Controls.Add(this.add_machine_save);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.latitude);
+            this.Controls.Add(this.longitude);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -110,8 +111,8 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox longitude;
+        private System.Windows.Forms.TextBox latitude;
         private System.Windows.Forms.Button add_machine_save;
         private System.Windows.Forms.Button add_machine_cancel;
     }

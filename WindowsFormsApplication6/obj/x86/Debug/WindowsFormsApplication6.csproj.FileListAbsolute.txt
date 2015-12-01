@@ -1,7 +1,4 @@
-c:\users\dell\documents\visual studio 2010\Projects\WindowsFormsApplication6\WindowsFormsApplication6\obj\x86\Debug\ResolveAssemblyReference.cache
 c:\users\dell\documents\visual studio 2010\Projects\WindowsFormsApplication6\WindowsFormsApplication6\obj\x86\Debug\WindowsFormsApplication6.Properties.Resources.resources
-c:\users\dell\documents\visual studio 2010\Projects\WindowsFormsApplication6\WindowsFormsApplication6\obj\x86\Debug\GenerateResource.read.1.tlog
-c:\users\dell\documents\visual studio 2010\Projects\WindowsFormsApplication6\WindowsFormsApplication6\obj\x86\Debug\GenerateResource.write.1.tlog
 c:\users\dell\documents\visual studio 2010\Projects\WindowsFormsApplication6\WindowsFormsApplication6\bin\Debug\WindowsFormsApplication6.exe
 c:\users\dell\documents\visual studio 2010\Projects\WindowsFormsApplication6\WindowsFormsApplication6\bin\Debug\WindowsFormsApplication6.pdb
 c:\users\dell\documents\visual studio 2010\Projects\WindowsFormsApplication6\WindowsFormsApplication6\obj\x86\Debug\WindowsFormsApplication6.exe
@@ -12,3 +9,6 @@ C:\Users\dell\Documents\Visual Studio 2010\Projects\WindowsFormsApplication6\Win
 C:\Users\dell\Documents\Visual Studio 2010\Projects\WindowsFormsApplication6\WindowsFormsApplication6\bin\Debug\GMap.NET.WindowsForms.xml
 C:\Users\dell\documents\visual studio 2010\Projects\WindowsFormsApplication6\WindowsFormsApplication6\obj\x86\Debug\WindowsFormsApplication6.machine_list.resources
 C:\Users\dell\documents\visual studio 2010\Projects\WindowsFormsApplication6\WindowsFormsApplication6\obj\x86\Debug\WindowsFormsApplication6.add_mschine.resources
+C:\Users\dell\documents\visual studio 2010\Projects\WindowsFormsApplication6\WindowsFormsApplication6\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\dell\documents\visual studio 2010\Projects\WindowsFormsApplication6\WindowsFormsApplication6\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\dell\documents\visual studio 2010\Projects\WindowsFormsApplication6\WindowsFormsApplication6\obj\x86\Debug\GenerateResource.write.1.tlog

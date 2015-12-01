@@ -83,6 +83,7 @@ namespace WindowsFormsApplication6
         {
             string message = "点击添加设备";
             add_mschine add_new = new add_mschine();
+            //ShowDialog(add_new);
             add_new.Show();
             //MessageBox.Show(message); 
         }

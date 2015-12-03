@@ -82,7 +82,13 @@ namespace WindowsFormsApplication6
         private void contextMenuStrip1_Click(object sender, EventArgs e)
         {
             string message = "点击添加设备";
+            Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
             add_mschine add_new = new add_mschine();
+            add_new.ShowDialog();//显示登陆窗体
+            if (add_new.DialogResult == DialogResult.OK)
+                return;
+            else return;
             //ShowDialog(add_new);
             add_new.Show();
             //MessageBox.Show(message); 

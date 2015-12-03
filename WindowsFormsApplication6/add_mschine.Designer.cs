@@ -28,42 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.longitude = new System.Windows.Forms.TextBox();
             this.latitude = new System.Windows.Forms.TextBox();
             this.add_machine_save = new System.Windows.Forms.Button();
             this.add_machine_cancel = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.install_time = new System.Windows.Forms.TextBox();
+            this.location = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.machine_name = new System.Windows.Forms.TextBox();
+            this.label = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // label4
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "经度";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(33, 127);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 12);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "经度";
             // 
-            // label2
+            // label5
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 94);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 12);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "纬度";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(35, 168);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(29, 12);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "纬度";
             // 
             // longitude
             // 
-            this.longitude.Location = new System.Drawing.Point(98, 50);
+            this.longitude.Location = new System.Drawing.Point(99, 125);
             this.longitude.Name = "longitude";
             this.longitude.Size = new System.Drawing.Size(100, 21);
             this.longitude.TabIndex = 2;
             // 
             // latitude
             // 
-            this.latitude.Location = new System.Drawing.Point(98, 91);
+            this.latitude.Location = new System.Drawing.Point(98, 165);
             this.latitude.Name = "latitude";
             this.latitude.Size = new System.Drawing.Size(100, 21);
             this.latitude.TabIndex = 3;
@@ -86,18 +92,75 @@
             this.add_machine_cancel.TabIndex = 5;
             this.add_machine_cancel.Text = "取消";
             this.add_machine_cancel.UseVisualStyleBackColor = true;
+            this.add_machine_cancel.Click += new System.EventHandler(this.add_machine_cancel_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(35, 91);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "安装时间";
+            // 
+            // install_time
+            // 
+            this.install_time.Location = new System.Drawing.Point(101, 88);
+            this.install_time.Name = "install_time";
+            this.install_time.Size = new System.Drawing.Size(100, 21);
+            this.install_time.TabIndex = 7;
+            // 
+            // location
+            // 
+            this.location.Location = new System.Drawing.Point(101, 53);
+            this.location.Name = "location";
+            this.location.Size = new System.Drawing.Size(100, 21);
+            this.location.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(35, 56);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "安装位置";
+            // 
+            // machine_name
+            // 
+            this.machine_name.Location = new System.Drawing.Point(104, 17);
+            this.machine_name.Name = "machine_name";
+            this.machine_name.Size = new System.Drawing.Size(100, 21);
+            this.machine_name.TabIndex = 11;
+            this.machine_name.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Location = new System.Drawing.Point(38, 20);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(53, 12);
+            this.label.TabIndex = 10;
+            this.label.Text = "设备名称";
+            this.label.Click += new System.EventHandler(this.label5_Click);
             // 
             // add_mschine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.machine_name);
+            this.Controls.Add(this.label);
+            this.Controls.Add(this.location);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.install_time);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.add_machine_cancel);
             this.Controls.Add(this.add_machine_save);
             this.Controls.Add(this.latitude);
             this.Controls.Add(this.longitude);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "add_mschine";
@@ -109,11 +172,17 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox longitude;
         private System.Windows.Forms.TextBox latitude;
         private System.Windows.Forms.Button add_machine_save;
         private System.Windows.Forms.Button add_machine_cancel;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox install_time;
+        private System.Windows.Forms.TextBox location;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox machine_name;
+        private System.Windows.Forms.Label label;
     }
 }

@@ -25,26 +25,67 @@ namespace WindowsFormsApplication6
 
         private void add_machine_save_Click(object sender, EventArgs e)
         {
+            string machine_name = this.machine_name.Text.ToString();
+            string location = this.location.Text.ToString();
+            string install_time = this.install_time.Text.ToString();
             string longitude = this.longitude.Text.ToString();
-            System.Console.WriteLine(longitude);
             string latitude = this.latitude.Text.ToString();
+            System.Console.WriteLine(machine_name);
+            System.Console.WriteLine(location);
+            System.Console.WriteLine(install_time);
+            System.Console.WriteLine(longitude);
             System.Console.WriteLine(latitude);
-            string query = "select * from t_user";
-            MySqlConnection myConnection = new MySqlConnection("server=localhost;user id=root;password=root;database=machine");
-            MySqlCommand myCommand = new MySqlCommand(query, myConnection);
+
+            MySqlConnection myConnection = new MySqlConnection("server=localhost;user id=root;password=root;database=machine;Charset=utf8");
             myConnection.Open();
-            myCommand.ExecuteNonQuery();
-            MySqlDataReader myDataReader = myCommand.ExecuteReader();
-            string bookres = "";
+
+            string get_max_id = "SELECT * FROM machine_info ORDER BY id DESC LIMIT 0, 1 ;";
+            MySqlCommand myCommand_getid = new MySqlCommand(get_max_id, myConnection);
+            myCommand_getid.ExecuteNonQuery();
+            MySqlDataReader myDataReader = myCommand_getid.ExecuteReader();
+            string maxid = "";
             while (myDataReader.Read() == true)
             {
-                bookres += myDataReader["id"];
-                bookres += myDataReader["name"];
-                bookres += myDataReader["password"];
+                maxid += myDataReader["id"];
+                break;
             }
             myDataReader.Close();
             myConnection.Close();
-            Console.WriteLine(bookres);
+            System.Console.WriteLine("--------" + maxid);
+            int max_id = int.Parse(maxid) +　1;
+            myConnection.Open();
+            string query = "INSERT INTO machine_info VALUES('" + max_id +"','" + machine_name + "','" + location + "','" + install_time + "','" + longitude + "','" + latitude + "');";
+            MySqlCommand myCommand_insert = new MySqlCommand(query, myConnection);
+            myCommand_insert.ExecuteNonQuery();
+            //MySqlDataReader myDataReader_insert = myCommand_insert.ExecuteReader();
+            //string ret = "";
+            //while (myDataReader.Read() == true)
+            //{
+            //    ret += myDataReader;
+            //}
+            //Console.WriteLine(ret);
+            //myDataReader_insert.Close();
+            MessageBox.Show("插入成功", "插入结果");
+            myConnection.Close();
+        }
+
+        private void add_machine_cancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;//关键:发送信息
+            this.Close();  
+            //System.Environment.Exit(System.Environment.ExitCode);
+            //this.Dispose();
+            //this.Close();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("节点1");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("节点2");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("节点0", new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode5});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(machine_list));
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("测试一级节点");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("测试二级节点");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("测试根节点", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2});
             this.gmap = new GMap.NET.WindowsForms.GMapControl();
             this.index = new System.Windows.Forms.Button();
             this.machine_info = new System.Windows.Forms.Button();
@@ -45,10 +45,10 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -185,6 +185,14 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(125, 26);
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.BackColor = System.Drawing.Color.Aqua;
+            this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
+            this.toolStripMenuItem1.Text = "添加设备";
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Firebrick;
@@ -204,24 +212,16 @@
             this.treeView1.HideSelection = false;
             this.treeView1.Location = new System.Drawing.Point(13, 121);
             this.treeView1.Name = "treeView1";
-            treeNode4.Name = "节点1";
-            treeNode4.Text = "节点1";
-            treeNode5.Name = "节点2";
-            treeNode5.Text = "节点2";
-            treeNode6.Name = "节点0";
-            treeNode6.Text = "节点0";
+            treeNode1.Name = "测试一级节点";
+            treeNode1.Text = "测试一级节点";
+            treeNode2.Name = "测试二级节点";
+            treeNode2.Text = "测试二级节点";
+            treeNode3.Name = "测试根节点";
+            treeNode3.Text = "测试根节点";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode6});
+            treeNode3});
             this.treeView1.Size = new System.Drawing.Size(261, 348);
             this.treeView1.TabIndex = 11;
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.BackColor = System.Drawing.Color.Aqua;
-            this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
-            this.toolStripMenuItem1.Text = "添加设备";
             // 
             // machine_list
             // 

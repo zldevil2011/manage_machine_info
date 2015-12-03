@@ -65,21 +65,21 @@
             this.longitude.Location = new System.Drawing.Point(99, 125);
             this.longitude.Name = "longitude";
             this.longitude.Size = new System.Drawing.Size(100, 21);
-            this.longitude.TabIndex = 2;
+            this.longitude.TabIndex = 4;
             // 
             // latitude
             // 
             this.latitude.Location = new System.Drawing.Point(98, 165);
             this.latitude.Name = "latitude";
             this.latitude.Size = new System.Drawing.Size(100, 21);
-            this.latitude.TabIndex = 3;
+            this.latitude.TabIndex = 5;
             // 
             // add_machine_save
             // 
             this.add_machine_save.Location = new System.Drawing.Point(98, 216);
             this.add_machine_save.Name = "add_machine_save";
             this.add_machine_save.Size = new System.Drawing.Size(75, 23);
-            this.add_machine_save.TabIndex = 4;
+            this.add_machine_save.TabIndex = 6;
             this.add_machine_save.Text = "添加";
             this.add_machine_save.UseVisualStyleBackColor = true;
             this.add_machine_save.Click += new System.EventHandler(this.add_machine_save_Click);
@@ -89,7 +89,7 @@
             this.add_machine_cancel.Location = new System.Drawing.Point(188, 216);
             this.add_machine_cancel.Name = "add_machine_cancel";
             this.add_machine_cancel.Size = new System.Drawing.Size(75, 23);
-            this.add_machine_cancel.TabIndex = 5;
+            this.add_machine_cancel.TabIndex = 7;
             this.add_machine_cancel.Text = "取消";
             this.add_machine_cancel.UseVisualStyleBackColor = true;
             this.add_machine_cancel.Click += new System.EventHandler(this.add_machine_cancel_Click);
@@ -108,14 +108,14 @@
             this.install_time.Location = new System.Drawing.Point(101, 88);
             this.install_time.Name = "install_time";
             this.install_time.Size = new System.Drawing.Size(100, 21);
-            this.install_time.TabIndex = 7;
+            this.install_time.TabIndex = 3;
             // 
             // location
             // 
             this.location.Location = new System.Drawing.Point(101, 53);
             this.location.Name = "location";
             this.location.Size = new System.Drawing.Size(100, 21);
-            this.location.TabIndex = 9;
+            this.location.TabIndex = 2;
             // 
             // label2
             // 
@@ -131,8 +131,7 @@
             this.machine_name.Location = new System.Drawing.Point(104, 17);
             this.machine_name.Name = "machine_name";
             this.machine_name.Size = new System.Drawing.Size(100, 21);
-            this.machine_name.TabIndex = 11;
-            this.machine_name.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.machine_name.TabIndex = 1;
             // 
             // label
             // 
@@ -142,7 +141,6 @@
             this.label.Size = new System.Drawing.Size(53, 12);
             this.label.TabIndex = 10;
             this.label.Text = "设备名称";
-            this.label.Click += new System.EventHandler(this.label5_Click);
             // 
             // add_mschine
             // 

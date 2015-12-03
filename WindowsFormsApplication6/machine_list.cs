@@ -9,14 +9,29 @@ using System.Windows.Forms;
 using GMap.NET;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApplication6
 {
+    struct machine
+    {
+        public int id;
+        public string machine_name;
+        public string location;
+        public string install_time;
+        public double longitude;
+        public double latitude;
+
+    }
     public partial class machine_list : Form
     {
+        private GMapMarkerImage currentMarker;
+        private machine[] m_list = new machine[10000];
         public machine_list()
         {
             InitializeComponent();
+            get_machine_list();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -30,27 +45,34 @@ namespace WindowsFormsApplication6
             root.Name = "root";
             root.Text = "设备列表";
             //一级
-            TreeNode node1 = new TreeNode();
-            node1.Text = "一号设备";
-            TreeNode node2 = new TreeNode();
-            node2.Text = "二号设备";
+            int len = m_list.Length;
+            for (int cnt = 0; cnt < len; ++cnt)
+            {
+                TreeNode tmp = new TreeNode();
+                tmp.Text = m_list[cnt].machine_name;
+                root.Nodes.Add(tmp);
+            }
+            //TreeNode node1 = new TreeNode();
+            //node1.Text = "一号设备";
+            //TreeNode node2 = new TreeNode();
+            //node2.Text = "二号设备";
             //二级
-            TreeNode node11 = new TreeNode();
-            node11.Text = "基本信息";
-            TreeNode node12 = new TreeNode();
-            node12.Text = "观测信息";
-            TreeNode node21 = new TreeNode();
-            node21.Text = "基本信息";
-            TreeNode node22 = new TreeNode();
-            node22.Text = "观测信息";
+            //TreeNode node11 = new TreeNode();
+            //node11.Text = "基本信息";
+            //TreeNode node12 = new TreeNode();
+            //node12.Text = "观测信息";
+            //TreeNode node21 = new TreeNode();
+            //node21.Text = "基本信息";
+            //TreeNode node22 = new TreeNode();
+            //node22.Text = "观测信息";
             //二级加入一级
-            node1.Nodes.Add(node11);
-            node1.Nodes.Add(node12);
-            node2.Nodes.Add(node21);
-            node2.Nodes.Add(node22);
+            //node1.Nodes.Add(node11);
+            //node1.Nodes.Add(node12);
+            //node2.Nodes.Add(node21);
+            ///node2.Nodes.Add(node22);
             //一级加入根
-            root.Nodes.Add(node1);
-            root.Nodes.Add(node2);
+            //root.Nodes.Add(node1);
+            //root.Nodes.Add(node2);
             treeView1.Nodes.Add(root);
             treeView1.MouseDown += new MouseEventHandler(treeView1_MouseDown);
             //gmap.OnMarkerClick += new MarkerClick(gmap_OnMarkerClick);
@@ -100,9 +122,6 @@ namespace WindowsFormsApplication6
 
         private void gmap_Load(object sender, EventArgs e)
         {
-            System.Random a = new Random(System.DateTime.Now.Millisecond);
-            int RandKey = a.Next(10);
-            System.Console.WriteLine("RandKey-----------------------------: {0}", RandKey);
             // Initialize map:    
             gmap.MapProvider = GMap.NET.MapProviders.GoogleChinaMapProvider.Instance;
             GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerOnly;
@@ -111,12 +130,21 @@ namespace WindowsFormsApplication6
             gmap.Zoom = 5;     //当前缩放
             gmap.ShowCenter = false; //不显示中心十字点
             gmap.Position = new PointLatLng(32.064, 118.704); //地图中心位置：南京
-
             GMapOverlay objects = new GMapOverlay("objects"); //放置marker的图层
-            GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(32.064, 118.704), GMarkerGoogleType.green);
-            GMarkerGoogle marker1 = new GMarkerGoogle(new PointLatLng(32.064, 110.704), GMarkerGoogleType.green);
-            objects.Markers.Add(marker);
-            objects.Markers.Add(marker1);
+            int len = m_list.Length;
+            for (int cnt = 0; cnt < len; ++cnt)
+            {
+                Bitmap bitmap = Bitmap.FromFile("C:\\Users\\dell\\Documents\\Visual Studio 2010\\Projects\\WindowsFormsApplication6\\WindowsFormsApplication6\\images\\water1.png") as Bitmap;
+                //GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(m_list[cnt].longitude, m_list[cnt].latitude), bitmap);
+                GMapMarkerImage marker = new GMapMarkerImage(new PointLatLng(m_list[cnt].longitude, m_list[cnt].latitude), bitmap);
+                marker.id = m_list[cnt].id;
+                marker.machine_name = m_list[cnt].machine_name;
+                marker.location = m_list[cnt].location;
+                marker.install_time = m_list[cnt].install_time;
+                marker.longitude = m_list[cnt].longitude;
+                marker.latitude = m_list[cnt].latitude;
+                objects.Markers.Add(marker);
+            }
             gmap.Overlays.Add(objects);
 
 
@@ -138,13 +166,110 @@ namespace WindowsFormsApplication6
         }
         void gmap_OnMarkerClick(GMapMarker item, MouseEventArgs e)
         {
-            String message = "marker was clicked(经度：" + item.Position.Lng + ", 纬度：" + item.Position.Lat + ")" ;
-            MessageBox.Show(message); 
+            if (item is GMapMarkerImage)
+            {
+                currentMarker = null;
+                GMapMarkerImage m = item as GMapMarkerImage;
+                String info_i = "设备编号:" + m.id;
+                info_i += "\n设备名称:" + m.machine_name;
+                info_i += "\n设备位置:" + m.location;
+                info_i += "\n安装时间:" + m.install_time;
+                info_i += "\n位置经度:" + m.longitude;
+                info_i += "\n位置纬度:" + m.latitude;
+                MessageBox.Show(info_i); 
+            }
+            //String message = "marker was clicked(经度：" + item.Position.Lng + ", 纬度：" + item.Position.Lat + ")" ;
+            //MessageBox.Show(message); 
         }
         void gmap_OnMarkerEnter(GMapMarker item)
         {
-            String info = item.Position.Lat + " " + item.Position.Lng;
-            this.toolTip1.SetToolTip(this.gmap, info);
+            if (item is GMapMarkerImage)
+            {
+                currentMarker = null;
+                GMapMarkerImage m = item as GMapMarkerImage;
+                String info_i = "设备编号:" + m.id;
+                info_i += "\n设备名称:" + m.machine_name;
+                info_i += "\n设备位置:" + m.location;
+                info_i += "\n安装时间:" + m.install_time;
+                info_i += "\n位置经度:" + m.longitude;
+                info_i += "\n位置纬度:" + m.latitude;
+                this.toolTip1.SetToolTip(this.gmap, info_i);
+            }
+            
+            //String info = item.Position.Lat + " " + item.Position.Lng;
+            //this.toolTip1.SetToolTip(this.gmap, info);
+        }
+        void get_machine_list()
+        {
+            int m_num = 0;
+            string query = "select * from machine_info";
+            MySqlConnection myConnection = new MySqlConnection("server=localhost;user id=root;password=root;database=machine;Charset=utf8");
+            MySqlCommand myCommand = new MySqlCommand(query, myConnection);
+            myConnection.Open();
+            myCommand.ExecuteNonQuery();
+            MySqlDataReader myDataReader = myCommand.ExecuteReader();
+            machine tmp = new machine();
+            while (myDataReader.Read() == true)
+            {
+                tmp.id = int.Parse(myDataReader["id"].ToString());
+                tmp.machine_name = myDataReader["machine_name"].ToString();
+                tmp.location = myDataReader["location"].ToString();
+                tmp.install_time = myDataReader["install_time"].ToString();
+                tmp.longitude = double.Parse(myDataReader["longitude"].ToString());
+                tmp.latitude = double.Parse(myDataReader["latitude"].ToString());
+                m_list[m_num++] = tmp;
+                System.Console.WriteLine(tmp);
+            }
+            myDataReader.Close();
+            myConnection.Close();
         }
     }
+
+
+    class GMapMarkerImage : GMapMarker
+    {
+        public int id;
+        public string machine_name;
+        public string location;
+        public string install_time;
+        public double longitude;
+        public double latitude;
+        private Image image;
+        public Image Image
+        {
+            get
+            {
+                return image;
+            }
+            set
+            {
+                image = value;
+                if (image != null)
+                {
+                    this.Size = new Size(image.Width, image.Height);
+                }
+            }
+        }
+        public GMapMarkerImage(GMap.NET.PointLatLng p, Image image)
+            : base(p)
+        {
+            Size = new System.Drawing.Size(image.Width, image.Height);
+            Offset = new System.Drawing.Point(-Size.Width / 2, -Size.Height / 2);
+            this.image = image;
+        }
+
+        public override void OnRender(Graphics g)
+        {
+            if (image == null)
+                return;
+            Rectangle rect = new Rectangle(LocalPosition.X, LocalPosition.Y, Size.Width, Size.Height);
+            g.DrawImage(image, rect);
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+        }
+    }
+
 }

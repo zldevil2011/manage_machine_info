@@ -67,6 +67,7 @@ namespace WindowsFormsApplication6
             //myDataReader_insert.Close();
             MessageBox.Show("插入成功", "插入结果");
             myConnection.Close();
+            this.Close();
         }
 
         private void add_machine_cancel_Click(object sender, EventArgs e)
@@ -76,16 +77,6 @@ namespace WindowsFormsApplication6
             //System.Environment.Exit(System.Environment.ExitCode);
             //this.Dispose();
             //this.Close();
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
